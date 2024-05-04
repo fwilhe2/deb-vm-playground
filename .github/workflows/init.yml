@@ -6,11 +6,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: debian:testing
     steps:
     - uses: actions/checkout@v4
     - name: DoSomething
       run: |
-        sudo apt install -y arch-test e2fsprogs mmdebstrap qemu-system-x86 qemu-user-static uidmap
+        apt install -y arch-test e2fsprogs mmdebstrap qemu-system-x86 qemu-user-static uidmap zip unzip wget
         wget https://salsa.debian.org/helmutg/debvm/-/archive/main/debvm-main.tar.gz
         tar xf debvm-main.tar.gz
         cd debvm-main/
